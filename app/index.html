@@ -18,57 +18,64 @@
         </p>
         <p class="text-center">Datas for Apr 14, 2022</p>
 
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="worldwide-tab" data-bs-target="#vaccinations-for-countries"
-                    data-bs-toggle="tab" role="tab" aria-selected="true">
-                    Worldwide</a>
+                <button class="nav-link active" id="worldwide" data-bs-target="#vaccinations-for-countries-wrapper"
+                    data-bs-toggle="tab" role="tab" aria-selected="true"
+                    aria-controls="vaccinations-for-countries-wrapper">
+                    Worldwide</button>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id='country-tab' data-bs-target="#vaccinations-for-country-wrapper"
-                    data-bs-toggle="tab" role="tab" aria-selected="false">
-                    Country</a>
+                <button class="nav-link" id='country' data-bs-target="#vaccinations-for-country-wrapper"
+                    data-bs-toggle="tab" role="tab" aria-selected="false"
+                    aria-controls="vaccinations-for-country-wrapper">
+                    Country</button>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id='continents-tab' data-bs-target="#continents" data-bs-toggle="tab" role="tab"
-                    aria-selected="false">Continents</a>
+                <button class="nav-link" id='continents' data-bs-target="#vaccinations-for-continents-wrapper"
+                    data-bs-toggle="tab" role="tab" aria-selected="false"
+                    aria-controls="vaccinations-for-continents-wrapper">Continents</button>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="social-tab" data-bs-target="#social" data-bs-toggle="tab" role="tab"
-                    aria-selected="false">Social</a>
+                <button class="nav-link" id="social" data-bs-target="#vaccinations-for-social-wrapper"
+                    data-bs-toggle="tab" role="tab" aria-selected="false"
+                    aria-controls="vaccinations-for-social-wrapper">Social</button>
             </li>
         </ul>
     </header>
 
-    <main class="container tab-content">
-        <div id="vaccinations-for-countries-wrapper" class="tab-pane fade show active" role="tabpanel"
+    <main class=" tab-content">
+        <div id="vaccinations-for-countries-wrapper" class=" p-5 tab-pane fade show active" role="tabpanel"
             aria-labelledby="worldwide-tab">
             <div id="vaccinations-for-countries"></div>
         </div>
-        <div id="vaccinations-for-type-wrapper" class="tab-pane fade show" role="tabpanel">
-            <div id="vaccinations-for-type"></div>
+        <div id="vaccinations-for-continents-wrapper" class=" p-5 tab-pane fade show" role="tabpanel">
+            <div id="vaccinations-for-continents"></div>
+        </div>
+        <div id="vaccinations-for-social-wrapper" class=" p-5 tab-pane fade show" role="tabpanel">
+            <div id="vaccinations-for-social"></div>
         </div>
 
-        <div id='vaccinations-for-country-wrapper' class="row align-items-center tab-pane fade show" role="tabpanel"
+        <div id='vaccinations-for-country-wrapper' class=" row align-items-center tab-pane fade show" role="tabpanel"
             aria-labelledby="country-tab">
-
-            <form class="input-group p-2 mb-5 col-5" id="country-form">
+            <form class="input-group p-5 pt-3 pb-4" id="country-form">
                 <input class="form-control" id='country-input' list="data-list-countries"
                     placeholder="Type to search...">
                 <datalist id="data-list-countries">
                 </datalist>
                 <button class="btn btn-outline-secondary" id="search-country" type="submit">Search</button>
             </form>
-
-            <div id='vaccinations-for-country' class="col">
+            <div id='vaccinations-for-country' class="pt-2">
             </div>
+        </div>
 
+        <div class="d-flex justify-content-center text-primary" id="spinner">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
 
     </main>
-    <footer>
-
-    </footer>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

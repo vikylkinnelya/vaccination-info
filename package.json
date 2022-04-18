@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
+  "name": "vaccination-info",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "Web that shows data about vaccination all over the world",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.1.3",
+    "compression": "^1.7.4",
     "d3": "^7.4.4",
     "express": "^4.17.3",
     "fs": "0.0.1-security",

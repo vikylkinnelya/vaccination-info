@@ -49,7 +49,7 @@ const getVaccinationForState = async (state) => {
                 // Construct scales and axes.
                 const xScale = xType(xDomain, xRange);
                 const yScale = yType(yDomain, yRange);
-                const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
+                const xAxis = d3.axisBottom(xScale).ticks(width / 50).tickSizeOuter(0);
                 const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
 
                 // Compute titles.
@@ -76,8 +76,7 @@ const getVaccinationForState = async (state) => {
                     .attr("height", height)
                     .attr("viewBox", [0, 0, width, height])
                     .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", 10)
+                    .attr("font-size", 15)
                     .style("-webkit-tap-highlight-color", "transparent")
                     .style("overflow", "visible")
                     .on("pointerenter pointermove", pointermoved)
@@ -96,7 +95,7 @@ const getVaccinationForState = async (state) => {
                         .attr("x2", width - marginLeft - marginRight)
                         .attr("stroke-opacity", 0.1))
                     .call(g => g.append("text")
-                        .attr("x", -marginLeft)
+                        .attr("x", -marginLeft / 2)
                         .attr("y", 10)
                         .attr("fill", "currentColor")
                         .attr("text-anchor", "start")

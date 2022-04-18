@@ -5,13 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
-
-
 const config = {
-    entry: './src/index.js',
+    entry: './app/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
@@ -43,10 +40,7 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
         config.plugins.push(new MiniCssExtractPlugin());
-        
-        
     } else {
         config.mode = 'development';
     }

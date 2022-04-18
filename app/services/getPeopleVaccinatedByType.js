@@ -4,7 +4,7 @@ const getPeopleVaccinatedByType = (type) => {
             let name = d => d.country,
                 value = d => d.people_vaccinated,
                 title, // given d in data, returns the title text
-                width = 640, // outer width, in pixels
+                width = 800, // outer width, in pixels
                 height = 400, // outer height, in pixels
                 innerRadius = 0, // inner radius of pie, in pixels (non-zero for donut)
                 outerRadius = Math.min(width, height) / 2, // outer radius of pie, in pixels
@@ -35,7 +35,7 @@ const getPeopleVaccinatedByType = (type) => {
             // Compute titles.
             if (title === undefined) {
                 const formatValue = d3.format(format);
-                title = i => `${N[i]}\n${formatValue(V[i])}`;
+                title = i => `${N[i]}`;
             } else {
                 const O = d3.map(peopleVaccinatedBySocial, d => d);
                 const T = title;
@@ -47,12 +47,12 @@ const getPeopleVaccinatedByType = (type) => {
             const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
             const arcLabel = d3.arc().innerRadius(labelRadius).outerRadius(labelRadius);
 
-            const svg = d3.select("#vaccinations-for-type")
+            const svg = d3.select(`#vaccinations-for-${type}`)
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height)
-                .attr("viewBox", [-width / 2, -height / 2, width, height])
-                .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+                .attr("viewBox", [-width / 3.5, -height / 2, width, height])
+                .attr("style", "min-width: 600px; max-width: 100%; height: auto; height: intrinsic;");
 
             svg.append("g")
                 .attr("stroke", stroke)
@@ -67,8 +67,7 @@ const getPeopleVaccinatedByType = (type) => {
                 .text(d => title(d.data));
 
             svg.append("g")
-                .attr("font-family", "sans-serif")
-                .attr("font-size", 10)
+                .attr("font-size", 15)
                 .attr("text-anchor", "middle")
                 .selectAll("text")
                 .data(arcs)
@@ -82,9 +81,36 @@ const getPeopleVaccinatedByType = (type) => {
                 .join("tspan")
                 .attr("x", 0)
                 .attr("y", (_, i) => `${i * 1.1}em`)
-                .attr("font-weight", (_, i) => i ? null : "bold")
+                .attr("font-weight", (_, i) => i ? null : "normal")
                 .text(d => d);
 
+
+            let legendG = svg.append("g") // note appending it to mySvg and not svg to make positioning easier
+                .attr("class", "legend")
+                .attr("font-size", 15)
+                .attr("text-anchor", "start")
+                .selectAll("g")
+                .data(arcs)
+                .enter().append("g")
+                .attr("transform", function (d, i) {
+                    return "translate(10," + i * 30 + ")";
+                });
+
+            legendG.append("text")
+                .attr("x", outerRadius + 30)
+                .attr("y", 9.5)
+                .attr("dy", "0.32em")
+                .text(function (d) {
+                    return `${N[d.data]}\n${d3.format(format)(V[d.data])}`
+                })
+
+            legendG.append("rect")
+                .attr("x", outerRadius + 10)
+                .attr("width", 19)
+                .attr("height", 19)
+                .attr("fill", function (d, i) {
+                    return color(i);
+                })
         })
 }
 

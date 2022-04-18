@@ -5,9 +5,6 @@ import getPeopleVaccinatedByCountry from './services/getPeopleVaccinatedByCountr
 import getPeopleVaccinatedByType from './services/getPeopleVaccinatedByType'
 import getVaccinationForState from './services/getVaccinationForState'
 
-
-
-
 window.addEventListener('DOMContentLoaded', () => {
 
     const spinner = document.getElementById('spinner')

@@ -1,3 +1,5 @@
+import getPeopleVaccinated from './getPeopleVaccinated'
+
 const getPeopleVaccinatedByType = (type) => {
     getPeopleVaccinated(type)
         .then(peopleVaccinatedBySocial => {

@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const spinner = document.getElementById('spinner')
     const showSpinner = () => spinner.style.display = 'block'
-    const hideSpinner = () => spinner.style.display = 'block'
+    const hideSpinner = () => spinner.style.display = 'none'
 
     const countryForm = document.getElementById('country-form')
     const countryInput = document.getElementById('country-input')

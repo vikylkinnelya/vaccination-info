@@ -83,7 +83,8 @@ app.get('/api/countries', (req, res) => {
     res.send(countries)
 })
 
-
-app.listen(3000, function () {
-    console.log("Сервер ожидает подключения...");
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
